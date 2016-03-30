@@ -1,7 +1,7 @@
 # Linkedin
 Loggin in Linkedin and parser
 
-user = LinkedIn(LOGIN, PASSWORD)                """Входит в аккаунт"""
+user = LinkedIn(LOGIN, PASSWORD)                """Входит в аккаунт"""\n
 
 user.get_page(url)                              """Возвращает страницу url"""
 user.get_page_soup(url)                         """Возвращает страницу url в виде soup"""
