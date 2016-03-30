@@ -1,0 +1,11 @@
+user = LinkedIn(LOGIN, PASSWORD)                """Входит в аккаунт"""
+
+user.get_page(url)                              """Возвращает страницу url"""
+user.get_page_soup(url)                         """Возвращает страницу url в виде soup"""
+user.is_read(message)                           """Проверяет прочитано ли сообщение. Возвращает True если прочитано"""
+user.get_conversation_messages(conversation_id) """Возвращает сообщения(json) одной переписки"""
+user.get_all_messages()                         """Возвращает все сообщения всех переписок"""
+user.set_unread(conversation_id)                """Ставит признак 'Непрочитан' для переписки"""
+user.set_read(conversation_id)                  """Ставит признак 'Прочитан' для переписки"""
+user.delete_conversation(conversation_id)       """Удаляет переписку"""
+user.send(users_id, subject, message)           """ Отправка сообщения"""
