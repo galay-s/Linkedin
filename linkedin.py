@@ -27,13 +27,14 @@ class LinkedIn(object):
         soup = BeautifulSoup(page, "html.parser")
         csrf = soup.find(id="loginCsrfParam-login")['value']
         login_information = {
-                             'isJsEnabled': 'false',
-                             'source_app': '',
-                             'tryCount': '',
-                             'clickedSuggestion': 'false',
-                             'session_key': self._login,
-                             'session_password': self._password,
-                             'loginCsrfParam': csrf}
+            'isJsEnabled': 'false',
+            'source_app': '',
+            'tryCount': '',
+            'clickedSuggestion': 'false',
+            'session_key': self._login,
+            'session_password': self._password,
+            'loginCsrfParam': csrf
+        }
         page_in = self._client.post(settings.LOGIN_URL, data=login_information)
 
         return page_in.content
@@ -104,13 +105,14 @@ class LinkedIn(object):
         """Возвращает одно сообщение"""
 
         message = " ".join([
-                        '_FROM_:',
-                        msg['sender']['firstName'].encode('utf-8'),
-                        msg['sender']['lastName'].encode('utf-8'),
-                        '\n'])
+            '_FROM_:',
+            msg['sender']['firstName'].encode('utf-8'),
+            msg['sender']['lastName'].encode('utf-8'),
+            '\n']
+        )
         message += '_SUBJECT_: ' + msg['subject'].encode('utf-8') + '\n'
         message += msg['body'].encode('utf-8') + '\n'
-        message += time.ctime(msg['timestamp']/1000) + '\n\n'
+        message += time.ctime(msg['timestamp'] / 1000) + '\n\n'
 
         return message
 
@@ -172,23 +174,24 @@ class LinkedIn(object):
         """ Отправка сообщения"""
 
         data = {
-                'ajaxSubmit': 'Send+Message',
-                'subject': subject,
-                'body': message,
-                'fromName': '',
-                'showRecipeints': 'showRecipeints',
-                'fromEmail': '',
-                'connectionIds': users_id,
-                'connectionNames': '',
-                'allowEditRcpts': "true",
-                'addMoreRcpts': "false",
-                'itemID': '',
-                'openSocialAppBodySuffix': '',
-                'st': '',
-                'viewerDestinationUrl': '',
-                'csrfToken': 'ajax:' + self._csrfToken_ajax.encode('utf-8'),
-                'sourceAlias': '',
-                'goback': ''}
+            'ajaxSubmit': 'Send+Message',
+            'subject': subject,
+            'body': message,
+            'fromName': '',
+            'showRecipeints': 'showRecipeints',
+            'fromEmail': '',
+            'connectionIds': users_id,
+            'connectionNames': '',
+            'allowEditRcpts': "true",
+            'addMoreRcpts': "false",
+            'itemID': '',
+            'openSocialAppBodySuffix': '',
+            'st': '',
+            'viewerDestinationUrl': '',
+            'csrfToken': 'ajax:' + self._csrfToken_ajax.encode('utf-8'),
+            'sourceAlias': '',
+            'goback': ''
+        }
         self._client.post(settings.SEND_URL, data=data)
 
 
