@@ -9,7 +9,7 @@ MAIL_PASS = 'XXXXXXXX'
 # Логин отправителя
 LOGIN_FROM = MAIL_FROM.split('@')[0]
 
-# Почтовый ящик и пароль получателя
+# Почтовый ящик получателя
 MAIL_TO = 'YYYYYYYYYY@mail.ru'
 
 LOGIN_LINKEDIN = 'ZZZZZZZZ@mail.ru'
